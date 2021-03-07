@@ -1,0 +1,23 @@
+:root {
+    --dark-gray: #393d3d;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+}
+
+/* body {
+    font-family: o	“Palatino Linotype”, Palatino, Palladio, “URW Palladio L”, “Book Antiqua”, Baskerville, “Bookman Old Style”, “Bitstream Charter”, “Nimbus Roman No9 L”, Garamond, “Apple Garamond”, “ITC Garamond Narrow”, “New Century Schoolbook”, “Century Schoolbook”, “Century Schoolbook L”, Georgia, serif
+} */
+.btn {
+    border: 2px solid rgba(2, 117, 216, 0.4);
+}
+

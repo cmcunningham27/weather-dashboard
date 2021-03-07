@@ -5,16 +5,80 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Weather Dashboard</title>
 </head>
 
 <body>
 
-    <header class="container-fluid bg-dark text-light mb-3 p-2">
-        <div class="d-flex justify-content-center">
+    <header>
+        <div class="d-flex bg-dark text-light justify-content-center mb-2 p-2">
             <h1>Weather Dashboard</h1>
         </div>
     </header>
-    
+
+    <section class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-4 rounded vh-100">
+                <h5>Search for a City:</h5>
+                <div class="input-group md-form form-sm form-1 pl-0">
+                    <div class="input-group-prepend">
+                    <input class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search"> 
+                    </div>
+                     <button type="button" class="btn btn-primary"><i class="fas fa-search text-white" aria-hidden="true"></i></button>
+                  </div>
+                  <div id="history" class="d-flex flex-column">
+
+                  </div>
+            </div>
+            <div id="city" class="col-12 col-md-8">
+                <div id="cityInfo" class="border rounded my-1 mx-3 pe-3">
+                    <h2 id="cityName"><div id="currentDay"><span id="cityIcon"></span></div></h2>
+                    <div id="temp"></div>
+                    <div id="humidity"></div>
+                    <div id="windSpeed"></div>
+                    <div id="uv"></div>
+                </div>
+                <div id="5Day">
+                    <h3></h3>
+                    <div class="row">
+                        <div class="col-2 bg-primary rounded mx-2 text-light">
+                            <h5 id="day1"></h5>
+                            <div id="day1Icon"></div>
+                            <div id="day1Temp"></div>
+                            <div id="day1Hum"></div>
+                        </div>
+                        <div class="col-2 bg-primary rounded mx-2 text-light">
+                            <h5 id="day2"></h5>
+                            <div id="day2Icon"></div>
+                            <h6 id="day2Temp"></h6>
+                            <h6 id="day2Hum"></h6>
+                        </div>
+                        <div class="col-2 bg-primary rounded mx-2 text-light">
+                            <h5 id="day3"></h5>
+                            <div id="day3Icon"></div>
+                            <h6 id="day3Temp"></h6>
+                            <h6 id="day3Hum"></h6>
+                        </div>
+                        <div class="col-2 bg-primary rounded mx-2 text-light">
+                            <h5 id="day4"></h5>
+                            <div id="day4Icon"></div>
+                            <h6 id="day4Temp"></h6>
+                            <h6 id="day4Hum"></h6>
+                        </div>
+                        <div class="col-2 bg-primary rounded mx-2 text-light">
+                            <h5 id="day5"></h5>
+                            <div id="day5Icon"></div>
+                            <h6 id="day5Temp"></h6>
+                            <h6 id="day5Hum"></h6>
+                        </div>
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+    </section>
+   <script src="./assets/js/script.js"></script> 
 </body>
 </html>
