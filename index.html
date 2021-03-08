@@ -19,11 +19,11 @@
 
     <section class="container-fluid">
         <div class="row">
-            <div class="col-12 col-md-4 rounded vh-100">
+            <div class="col-12 col-md-5 rounded vh-100">
                 <h5>Search for a City:</h5>
                 <div class="input-group md-form form-sm form-1 pl-0">
                     <div class="input-group-prepend">
-                    <input class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search"> 
+                    <input id="input" class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search"> 
                     </div>
                      <button type="button" class="btn btn-primary"><i class="fas fa-search text-white" aria-hidden="true"></i></button>
                   </div>
@@ -31,42 +31,42 @@
 
                   </div>
             </div>
-            <div id="city" class="col-12 col-md-8">
-                <div id="cityInfo" class="border rounded my-1 mx-3 pe-3">
-                    <h2 id="cityName"><div id="currentDay"><span id="cityIcon"></span></div></h2>
+            <div id="city" class="d-none col-12 col-md-8">
+                <div id="cityInfo" class="border rounded my-1 mx-3 p-3">
+                    <h2 id="cityName"><span id="currentDay"><span id="cityIcon"></span></span></h2>
                     <div id="temp"></div>
                     <div id="humidity"></div>
                     <div id="windSpeed"></div>
                     <div id="uv"></div>
                 </div>
                 <div id="5Day">
-                    <h3></h3>
+                    <h3>5-Day Forecast:</h3>
                     <div class="row">
-                        <div class="col-2 bg-primary rounded mx-2 text-light">
+                        <div class="future d-none col-2 bg-primary rounded mx-2 text-light">
                             <h5 id="day1"></h5>
                             <div id="day1Icon"></div>
                             <div id="day1Temp"></div>
                             <div id="day1Hum"></div>
                         </div>
-                        <div class="col-2 bg-primary rounded mx-2 text-light">
+                        <div class="future d-none col-2 bg-primary rounded mx-2 text-light">
                             <h5 id="day2"></h5>
                             <div id="day2Icon"></div>
                             <h6 id="day2Temp"></h6>
                             <h6 id="day2Hum"></h6>
                         </div>
-                        <div class="col-2 bg-primary rounded mx-2 text-light">
+                        <div class="future d-none col-2 bg-primary rounded mx-2 text-light">
                             <h5 id="day3"></h5>
                             <div id="day3Icon"></div>
                             <h6 id="day3Temp"></h6>
                             <h6 id="day3Hum"></h6>
                         </div>
-                        <div class="col-2 bg-primary rounded mx-2 text-light">
+                        <div class="future d-none col-2 bg-primary rounded mx-2 text-light">
                             <h5 id="day4"></h5>
                             <div id="day4Icon"></div>
                             <h6 id="day4Temp"></h6>
                             <h6 id="day4Hum"></h6>
                         </div>
-                        <div class="col-2 bg-primary rounded mx-2 text-light">
+                        <div class="future d-none col-2 bg-primary rounded mx-2 text-light">
                             <h5 id="day5"></h5>
                             <div id="day5Icon"></div>
                             <h6 id="day5Temp"></h6>
@@ -79,6 +79,7 @@
             </div>
         </div>
     </section>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
    <script src="./assets/js/script.js"></script> 
 </body>
 </html>

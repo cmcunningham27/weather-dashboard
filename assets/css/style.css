@@ -21,3 +21,6 @@ html {
     border: 2px solid rgba(2, 117, 216, 0.4);
 }
 
+.future {
+    visibility: none;
+}
