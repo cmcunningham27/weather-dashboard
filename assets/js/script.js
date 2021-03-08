@@ -37,8 +37,8 @@ let day4Hum = $("#day4Hum");
 let day5Hum = $("#day5Hum");
 let cities = [];
     
-cities.push(localStorage.getItem("cities", cities));
-console.log(cities);
+// cities.push(localStorage.getItem("cities", cities));
+// console.log(cities);
 
 search.click(function() {
     let newCity = $("#input").val();
@@ -46,33 +46,33 @@ search.click(function() {
     cities.push(newCity);
     console.log(cities);
     localStorage.setItem("cities", JSON.stringify(cities));
-    history.createElement("div")
+    history.createElement("ul");
 })
 //fetches information needed for present city weather
-// function searchCity() {
-//     let requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + input.value + "&appid=217bed3cfe116291c85bc4819a64b5e0"
+function searchCity() {
+    let requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + input.value + "&appid=217bed3cfe116291c85bc4819a64b5e0"
 
-//     fetch (requestURL, {
-//         units: "imperial"
-//     })
-//     .then(function(response) {
-//         return response.json();
-//     })
-//     .then(function(data) {
-//         console.log(data);
-//         present.addClass("col-12 col-md-8");
-//         for (var i = 0; i < data.length; i++) {
-//             cityName.texContent = data[i].name;
-//             currentDay.textcontent = moment().subtract(10, "days").calendar();
-//             cityIcon.textContent = data[i].weather.icon;
-//             temp.textContent = data[i].main.temp;
-//             humidity.textContent = data[i].main.humidity;
-//             windSpeed.textContent = data[i].wind.speed;
-//         }
-//     }).catch(function(err) {
-//         console.log(err);
-//     })
-// }
+    fetch (requestURL, {
+        units: "imperial"
+    })
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        console.log(data);
+        present.addClass("col-12 col-md-8");
+        for (var i = 0; i < data.length; i++) {
+            cityName.texContent = data[i].name;
+            currentDay.textcontent = moment().subtract(10, "days").calendar();
+            cityIcon.textContent = data[i].weather.icon;
+            temp.textContent = data[i].main.temp;
+            humidity.textContent = data[i].main.humidity;
+            windSpeed.textContent = data[i].wind.speed;
+        }
+    }).catch(function(err) {
+        console.log(err);
+    })
+}
 
 // //Adds event listener for when the user searches a city
-// search.on("click", searchCity(input.value));
+search.on("click", searchCity(input.value));
