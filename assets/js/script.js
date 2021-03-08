@@ -1,5 +1,5 @@
 //Search tabs declared in variables
-let input = $("input");
+let input = $("#input");
 let search = $(".btn");
 let history = $("#history");
 
@@ -41,7 +41,7 @@ let cities = [];
 // console.log(cities);
 
 search.click(function() {
-    let newCity = $("#input").val();
+    let newCity = input.val();
     
     cities.push(newCity);
     console.log(cities);
@@ -50,7 +50,7 @@ search.click(function() {
 })
 //fetches information needed for present city weather
 function searchCity() {
-    let requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + input.value + "&appid=217bed3cfe116291c85bc4819a64b5e0"
+    let requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + input.val() + "&appid=217bed3cfe116291c85bc4819a64b5e0"
 
     fetch (requestURL, {
         units: "imperial"
