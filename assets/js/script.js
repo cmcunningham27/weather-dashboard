@@ -43,25 +43,32 @@ let day5Hum = $("#day5Hum");
 // console.log(cities);
 
 search.click(function() {
+
     let newCity = input.val();
-    
-    //cities.push(newCity);
-    //console.log(cities);
 
     const history = JSON.parse(localStorage.getItem("cities"));
+    console.log(JSON.stringify(newCity));
+    console.log($.inArray(JSON.parse(JSON.stringify(newCity)), history));
 
-    history.push(newCity);
+    if ($.inArray(JSON.parse(JSON.stringify(newCity)), history) >= 0) {
+        console.log("already here");
+        return;
+        
+    } else {
+        console.log("Not here");
+        history.push(newCity);
 
-    localStorage.setItem("cities", JSON.stringify(history));
+        localStorage.setItem("cities", JSON.stringify(history));
 
-    let listItems = "";
-    for (let i = 0; i < history.length; i++) {
-        listItems += "<li class='list-city-item'>"+history[i]+"</li>";
-    };
+        let listItems = "";
+        for (let i = 0; i < history.length; i++) {
+            listItems += "<li class='list-city-item'>"+history[i]+"</li>";
+        };
 
-    $(".past-cities").html(listItems);
+        $(".past-cities").html(listItems);
 
-    searchCity();
+        searchCity(newCity);
+    }
 })
 
     let pastCitiesHistory = JSON.parse(localStorage.getItem("cities"));
@@ -88,23 +95,13 @@ function searchCity() {
     .then(function(data) {
         console.log(data);
         present.removeClass("d-none");
-        // for (var i = 0; i < data.length; i++) {
-        //     cityName.texContent = data[i].name;
-        //     currentDay.textcontent = moment().subtract(10, "days").calendar();
-        //     cityIcon.textContent = data[i].weather.icon;
-        //     temp.textContent = data[i].main.temp;
-        //     humidity.textContent = data[i].main.humidity;
-        //     windSpeed.textContent = data[i].wind.speed;
-        // }
 
-        // </span>
-        //         <span id="currentDay"><span id="cityIcon"></span></span>
 
         const currentDayMarkUp = 
         `
             <h2 id="cityName">
                 <span>${data.name}</span>
-                <span>${Date.now}</span>
+                <span>${moment().subtract(10, "days").calendar()}</span>
                 <img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png"/>
                 
             </h2>
@@ -114,7 +111,7 @@ function searchCity() {
             <div id="uv"></div>
         `;
 
-        $("#cityInfo").html();
+        $("#cityInfo").html(currentDayMarkUp);
 
     }).catch(function(err) {
         console.log(err);
