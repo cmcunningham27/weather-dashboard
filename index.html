@@ -20,21 +20,25 @@
 
     <section class="container-fluid">
         <div class="row">
-            <div class="col-12 col-md-5 rounded vh-100">
+            <div class="col-12 col-md-4 rounded">
                 <h5>Search for a City:</h5>
                 <div class="input-group md-form form-sm form-1 pl-0">
                     <div class="input-group-prepend">
                     <input id="input" class="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search"> 
+                    <button type="button" class="rounded btn btn-primary"><i class="fas fa-search text-white" aria-hidden="true"></i></button>
                     </div>
-                     <button type="button" class="btn btn-primary"><i class="fas fa-search text-white" aria-hidden="true"></i></button>
+                     
                   </div>
                   <div id="history" class="d-flex flex-column">
                         <ul id="pastCities" class="list-unstyled"></ul>
                   </div>
             </div>
             <div id="city" class="d-none col-12 col-md-8">
-                <div id="cityInfo" class="border rounded my-1 mx-3 p-3">
-                    <h2 id="cityName"><span id="currentDay"><span id="cityIcon"></span></span></h2>
+                <div id="cityInfo" class="border rounded my-1 p-3">
+                    <h2 id="cityName">
+                        <span id="currentDay"></span>
+                        <span id="cityIcon"></span>
+                    </h2>
                     <div id="temp"></div>
                     <div id="humidity"></div>
                     <div id="windSpeed"></div>

@@ -13,6 +13,8 @@ let cityIcon = $("#cityIcon");
 let temp = $("#temp");
 let humidity = $("#humidity");
 let windSpeed = $("#windSpeed");
+let lat;
+let lon;
 let uv = $("#uv");
 
 //Future weather tabs declared in variables
@@ -47,15 +49,12 @@ search.click(function() {
     let newCity = input.val();
 
     const history = JSON.parse(localStorage.getItem("cities"));
-    console.log(JSON.stringify(newCity));
-    console.log($.inArray(JSON.parse(JSON.stringify(newCity)), history));
 
     if ($.inArray(JSON.parse(JSON.stringify(newCity)), history) >= 0) {
-        console.log("already here");
+        console.log("Search a new city");
         return;
         
     } else {
-        console.log("Not here");
         history.push(newCity);
 
         localStorage.setItem("cities", JSON.stringify(history));
@@ -86,37 +85,62 @@ search.click(function() {
 
 //fetches information needed for present city weather
 function searchCity() {
-    let requestURL = "https://api.openweathermap.org/data/2.5/weather?q=" + input.val() + "&appid=217bed3cfe116291c85bc4819a64b5e0&units=imperial"
+    let requestCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + input.val() + "&appid=217bed3cfe116291c85bc4819a64b5e0&units=imperial"
 
-    fetch (requestURL)
+    fetch (requestCurrent)
     .then(function(response) {
         return response.json();
     })
     .then(function(data) {
         console.log(data);
         present.removeClass("d-none");
-
-
+        
+        
         const currentDayMarkUp = 
         `
             <h2 id="cityName">
                 <span>${data.name}</span>
                 <span>${moment().subtract(10, "days").calendar()}</span>
                 <img src="http://openweathermap.org/img/w/${data.weather[0].icon}.png"/>
-                
+        
             </h2>
-            <div id="temp">${data.main.temp} F</div>
-            <div id="humidity">${data.main.humidity} %</div>
-            <div id="windSpeed">${data.wind.speed}</div>
-            <div id="uv"></div>
+            <div id="temp">Temperature: ${data.main.temp} &#xb0;F</div>
+            <div id="humidity">Humidity: ${data.main.humidity} %</div>
+            <div id="windSpeed">Wind Speed: ${data.wind.speed} MPH</div>
+            <div id="uv">UV Index: </div>
         `;
 
         $("#cityInfo").html(currentDayMarkUp);
+        let lat = data.coord.lat;
+        let lon = data.coord.lon;
 
+    let requestUV = "https://api.openweathermap.org/data/2.5/uvi?lat=" + lat + "&lon=" + lon + "&appid=217bed3cfe116291c85bc4819a64b5e0&units=imperial"
+
+    fetch (requestUV)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        console.log(data);
+        
+        const currentUV =
+        `
+            <div id="uv">UV Index: ${data.value}</div>
+        `
+        $("#uv").html(currentUV);
+    
+        // let requestFive = "https://api.openweathermap.org/data/forecast?"
     }).catch(function(err) {
         console.log(err);
     })
-}
 
-// //Adds event listener for when the user searches a city
-//search.on("click", searchCity);
+    
+        
+//         // const currentDayMarkUp = 
+//         // `
+//         //     <div id="uv">UV Index: ${data.</div>
+//         // `;
+
+//         // $("#cityInfo").html(currentDayMarkUp);    
+})
+}
