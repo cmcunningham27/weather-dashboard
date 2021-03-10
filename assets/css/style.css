@@ -11,8 +11,37 @@
 }
 
 html {
-    font-size: 10px;
+    font-size: 15px;
 }
+
+h1 {
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-size: 3rem
+}
+
+h3 {
+    font-size: 2.5rem;
+}
+
+h4,
+#currentDay {
+    font-size: 2rem;
+}
+
+h5 {
+    font-size: 1.5rem;
+}
+
+h6 {
+    font-size: 1rem;
+}
+
+
+
+
 
 /* body {
     font-family: o	“Palatino Linotype”, Palatino, Palladio, “URW Palladio L”, “Book Antiqua”, Baskerville, “Bookman Old Style”, “Bitstream Charter”, “Nimbus Roman No9 L”, Garamond, “Apple Garamond”, “ITC Garamond Narrow”, “New Century Schoolbook”, “Century Schoolbook”, “Century Schoolbook L”, Georgia, serif

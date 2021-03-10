@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <title>Weather Dashboard</title>
     
 </head>
@@ -20,7 +21,7 @@
 
     <section class="container-fluid">
         <div class="row">
-            <div class="col-12 col-md-4 rounded">
+            <div class="col-12 col-md-3 rounded">
                 <h5>Search for a City:</h5>
                 <div class="input-group md-form form-sm form-1 pl-0">
                     <div class="input-group-prepend">
@@ -33,21 +34,21 @@
                         <ul id="pastCities" class="list-unstyled"></ul>
                   </div>
             </div>
-            <div id="city" class="d-none col-12 col-md-8">
+            <div id="city" class="d-none col-12 col-md-9">
                 <div id="cityInfo" class="border rounded my-1 p-3">
-                    <h2 id="cityName">
+                    <h5 id="cityName">
                         <span id="currentDay"></span>
                         <span id="cityIcon"></span>
-                    </h2>
+                    </h5>
                     <div id="temp"></div>
                     <div id="humidity"></div>
                     <div id="windSpeed"></div>
                     <div id="uv"></div>
                 </div>
-                <div id="5Day">
-                    <h3>5-Day Forecast:</h3>
-                    <div class="row">
-                        <div class="future d-none col-2 bg-primary rounded mx-2 text-light">
+                <div id="5Day" class="d-none">
+                    <h5>5-Day Forecast:</h5>
+                    <div id="futureWeather"class="row">
+                        <div class="future col-2 bg-primary rounded mx-2 text-light">
                             <h5 id="day1"></h5>
                             <div id="day1Icon"></div>
                             <div id="day1Temp"></div>
