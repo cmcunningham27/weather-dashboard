@@ -1,48 +1,18 @@
 //Search tabs declared in variables
 let input = $("#input");
 let search = $(".btn");
-let history = $("#history");
+let historyCities = $("#historyCities");
 let pastCities = document.createElement("ul");
 pastCities.setAttribute("class","past-cities list-unstyled");
-//let pastCity = document.createElement("li");
+let listCityItem = $(".list-city-item");
 //Present weather tabs declared in variables
 let present = $("#city");
-let cityName = $("#cityName");
-let currentDay = $("#currentDay");
-let cityIcon = $("#cityIcon");
-let temp = $("#temp");
-let humidity = $("#humidity");
-let windSpeed = $("#windSpeed");
-let lat;
-let lon;
-let uv = $("#uv");
 
-//Future weather tabs declared in variables
+
+// //Future weather tabs declared in variables
 let futureDivs = $("#5Day");
-let day1 = $("#day1");
-let day2 = $("#day2");
-let day3 = $("#day3");
-let day4 = $("#day4");
-let day5 = $("#day5");
-let day1Icon = $("#day1Icon");
-let day2Icon = $("#day2Icon");
-let day3Icon = $("#day3Icon");
-let day4Icon = $("#day4Icon");
-let day5Icon = $("#day5Icon");
-let day1Temp = $("#day1Temp");
-let day2Temp = $("#day2Temp");
-let day3Temp = $("#day3Temp");
-let day4Temp = $("#day4Temp");
-let day5Temp = $("#day5Temp");
-let day1Hum = $("#day1Hum");
-let day2Hum = $("#day2Hum");
-let day3Hum = $("#day3Hum");
-let day4Hum = $("#day4Hum");
-let day5Hum = $("#day5Hum");
-//let cities = [];
-    
-// cities.push(localStorage.getItem("cities", cities));
-// console.log(cities);
+
+
 
 search.click(function() {
 
@@ -54,9 +24,10 @@ search.click(function() {
         localStorage.setItem("cities", JSON.stringify(newInput));
         const history = JSON.parse(localStorage.getItem("cities"));
         console.log(history);
+        historyCities.append(pastCities); // ul 
         let listItems = "";
         for (let i = 0; i < history.length; i++) {
-            listItems += "<li class='list-city-item border'>"+history[i]+"</li>";
+            listItems += "<li class='list-city-item border p-3'>"+history[i]+"</li>";
         };
 
         $(".past-cities").html(listItems);
@@ -64,26 +35,26 @@ search.click(function() {
         searchCity(newCity);
     } else {
 
-    history = JSON.parse(localStorage.getItem("cities"));
+        history = JSON.parse(localStorage.getItem("cities"));
 
     
-    if ($.inArray(JSON.parse(JSON.stringify(newCity)), history) >= 0) {
-        console.log("Search a new city");
-        return;
-    }
+        if ($.inArray(JSON.parse(JSON.stringify(newCity)), history) >= 0) {
+            console.log("Search a new city");
+            return;
+        }
     
-    history.push(newCity);
+        history.push(newCity);
 
-    localStorage.setItem("cities", JSON.stringify(history));
+        localStorage.setItem("cities", JSON.stringify(history));
 
-    listItems = "";
-    for (let i = 0; i < history.length; i++) {
-        listItems += "<li class='list-city-item border p-3'>"+history[i]+"</li>";
-    };
+        listItems = "";
+        for (let i = 0; i < history.length; i++) {
+            listItems += "<li class='list-city-item border p-3'>"+history[i]+"</li>";
+        };
 
-    $(".past-cities").html(listItems);
+        $(".past-cities").html(listItems);
 
-    searchCity(newCity);
+        searchCity(newCity);
     }
 })
     if (localStorage.getItem("cities") === null) {
@@ -93,7 +64,7 @@ search.click(function() {
         let pastCitiesHistory = JSON.parse(localStorage.getItem("cities"));
 
         console.log("*****",pastCitiesHistory);
-        history.append(pastCities); // ul 
+        historyCities.append(pastCities); // ul 
 
         let listItems = "";
         for (let i = 0; i < pastCitiesHistory.length; i++) {
@@ -106,8 +77,8 @@ search.click(function() {
 
 
 //fetches information needed for present city weather
-function searchCity() {
-    let requestCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + input.val() + "&appid=217bed3cfe116291c85bc4819a64b5e0&units=imperial"
+function searchCity(word) {
+    let requestCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" + word + "&appid=217bed3cfe116291c85bc4819a64b5e0&units=imperial"
 
     fetch (requestCurrent)
     .then(function(response) {
@@ -129,7 +100,7 @@ function searchCity() {
             <div id="temp" class="p-2">Temperature: ${data.main.temp} &#xb0;F</div>
             <div id="humidity" class="p-2">Humidity: ${data.main.humidity} %</div>
             <div id="windSpeed" class="p-2">Wind Speed: ${data.wind.speed} MPH</div>
-            <div id="uv" class="p-2">UV Index: </div>
+            <div id="uv"></div>
         `;
 
         $("#cityInfo").html(currentDayMarkUp);
@@ -148,13 +119,20 @@ function searchCity() {
         
         const currentUV =
         `
-            <div id="uv">UV Index: ${data.value}</div>
+            <div id="uv" class="p-2">UV Index: ${data.value}</div>
         `;
 
-        $("#uv").html(currentUV);
+        $("#uv").replaceWith(currentUV);
 
+        // if (data.value < 3) {
+        //     document.getElementById("#uvColor").style.backgroundColor = "#00FF00";
+        // } else if (data.value >= 3 && data.value < 6) {
+        //     document.getElementById("#uvColor").style.backgroundColor = "#";
+        // } else {
+        //     document.getElementById("#uvColor").style.backgroundColor = "#FF0000";
+        // }
 
-    let requestFive = "https://api.openweathermap.org/data/2.5/forecast?q=" + input.val() + "&cnt=5&appid=217bed3cfe116291c85bc4819a64b5e0&units=imperial"
+    let requestFive = "https://api.openweathermap.org/data/2.5/forecast?q=" + word + "&cnt=5&appid=217bed3cfe116291c85bc4819a64b5e0&units=imperial"
 
     fetch(requestFive)
     .then(function(response) {
@@ -166,52 +144,50 @@ function searchCity() {
 
         const currentFive =
         `
-        <div class="future col-2.5 bg-primary rounded mx-1 text-light">
+        <div class="future col-2 bg-primary rounded mx-2 py-2 text-light">
         <h5 id="day1" class="fw-bold">${moment().add(1, "days").format("MM/DD/YYYY")}</h5>
-        <div id="day1Icon">${data.list[0].weather[0].icon}.png</div>
-        <div id="day1Temp">Temp: ${data.list[0].main.temp}&#xb0;</div>
-        <div id="day1Hum">${data.list[0].main.humidity}</div>
+        <div id="day1Icon"><img src="http://openweathermap.org/img/w/${data.list[0].weather[0].icon}.png"/></div>
+        <div id="day1Temp">Temp: ${data.list[0].main.temp}&#xb0;F</div>
+        <div id="day1Hum">Humidity: ${data.list[0].main.humidity}%</div>
     </div>
-    <div class="future col-2 bg-primary rounded mx-1 text-light">
+    <div class="future col-2 bg-primary rounded mx-2 py-2 text-light">
         <h5 id="day2">${moment().add(2, "days").format("MM/DD/YYYY")}</h5>
-        <div id="day2Icon">${data.list[0].weather[0].icon}.png</div>
-        <h6 id="day2Temp"></h6>
-        <h6 id="day2Hum"></h6>
+        <div id="day2Icon"><img src="http://openweathermap.org/img/w/${data.list[1].weather[0].icon}.png"/></div>
+        <div id="day2Temp">Temp: ${data.list[1].main.temp}&#xb0;F</div>
+        <div id="day2Hum">Humidity: ${data.list[1].main.humidity}%</div>
     </div>
-    <div class="future col-2.5 bg-primary rounded mx-1 text-light">
-        <h5 id="day3">${moment().add(3, "days").calendar()}</h5>
-        <div id="day3Icon"></div>
-        <h6 id="day3Temp"></h6>
-        <h6 id="day3Hum"></h6>
+    <div class="future col-2 bg-primary rounded mx-2 py-2 text-light">
+        <h5 id="day3">${moment().add(3, "days").format("MM/DD/YYYY")}</h5>
+        <div id="day3Icon"><img src="http://openweathermap.org/img/w/${data.list[2].weather[0].icon}.png"/></div>
+        <div id="day3Temp">Temp: ${data.list[2].main.temp}&#xb0;F</div>
+        <div id="day3Hum">Humidity: ${data.list[2].main.humidity}%</div>
     </div>
-    <div class="future col-2 bg-primary rounded mx-1 text-light">
-        <h5 id="day4">${moment().add(4, "days").calendar()}</h5>
-        <div id="day4Icon"></div>
-        <h6 id="day4Temp"></h6>
-        <h6 id="day4Hum"></h6>
+    <div class="future col-2 bg-primary rounded mx-2 py-2 text-light">
+        <h5 id="day4">${moment().add(4, "days").format("MM/DD/YYYY")}</h5>
+        <div id="day4Icon"><img src="http://openweathermap.org/img/w/${data.list[3].weather[0].icon}.png"/></div>
+        <div id="day4Temp">Temp: ${data.list[3].main.temp}&#xb0;F</div>
+        <div id="day4Hum">Humidity: ${data.list[3].main.humidity}%</div>
     </div>
-    <div class="future col-2 bg-primary rounded mx-1 text-light">
-        <h5 id="day5">${moment().add(5, "days").calendar()}</h5>
-        <div id="day5Icon"></div>
-        <h6 id="day5Temp"></h6>
-        <h6 id="day5Hum"></h6>
+    <div class="future col-2 bg-primary rounded mx-2 py-2 text-light">
+        <h5 id="day5">${moment().add(5, "days").format("MM/DD/YYYY")}</h5>
+        <div id="day5Icon"><img src="http://openweathermap.org/img/w/${data.list[4].weather[0].icon}.png"/></div>
+        <div id="day5Temp">Temp: ${data.list[4].main.temp}&#xb0;F</div>
+        <div id="day5Hum">Humidity: ${data.list[4].main.humidity}%</div>
     </div>
-        `
+        `;
         $("#futureWeather").html(currentFive);
     })
     
-        // let requestFive = "https://api.openweathermap.org/data/forecast?"
+        
     }).catch(function(err) {
         console.log(err);
     })
 
-    
-        
-//         // const currentDayMarkUp = 
-//         // `
-//         //     <div id="uv">UV Index: ${data.</div>
-//         // `;
-
-//         // $("#cityInfo").html(currentDayMarkUp);    
 })
 }
+
+$(".past-cities").on("click", "li", function(name) {
+    searchCity(name.target.firstChild.data);
+})
+
+
