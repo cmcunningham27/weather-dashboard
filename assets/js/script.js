@@ -160,31 +160,31 @@ function searchCity(word) {
         //renders html elements by replacing original html elements and inserting path to information
         const currentFive =
         `
-        <div class="future col-12 col-sm-5 col-md-3 col-lg-2 col-xl-3 bg-primary rounded m-2 py-2 text-light">
+        <div class="future col-12 col-sm-5 col-md-3 bg-primary rounded m-2 py-2 text-light">
             <h5 id="day1" class="fw-bold">${moment().add(1, "days").format("MM/DD/YYYY")}</h5>
             <div id="day1Icon"><img src="http://openweathermap.org/img/w/${data.list[0].weather[0].icon}.png"/></div>
             <div id="day1Temp">Temp: ${data.list[0].main.temp}&#xb0;F</div>
             <div id="day1Hum">Humidity: ${data.list[0].main.humidity}%</div>
         </div>
-        <div class="future col-12 col-sm-5 col-md-3 col-lg-2 col-xl-3 bg-primary rounded m-2 py-2 text-light">
+        <div class="future col-12 col-sm-5 col-md-3 bg-primary rounded m-2 py-2 text-light">
             <h5 id="day2">${moment().add(2, "days").format("MM/DD/YYYY")}</h5>
             <div id="day2Icon"><img src="http://openweathermap.org/img/w/${data.list[1].weather[0].icon}.png"/></div>
             <div id="day2Temp">Temp: ${data.list[1].main.temp}&#xb0;F</div>
             <div id="day2Hum">Humidity: ${data.list[1].main.humidity}%</div>
         </div>
-        <div class="future col-12 col-sm-5 col-md-3 col-lg-2 col-xl-3 bg-primary rounded m-2 py-2 text-light">
+        <div class="future col-12 col-sm-5 col-md-3 bg-primary rounded m-2 py-2 text-light">
             <h5 id="day3">${moment().add(3, "days").format("MM/DD/YYYY")}</h5>
             <div id="day3Icon"><img src="http://openweathermap.org/img/w/${data.list[2].weather[0].icon}.png"/></div>
             <div id="day3Temp">Temp: ${data.list[2].main.temp}&#xb0;F</div>
             <div id="day3Hum">Humidity: ${data.list[2].main.humidity}%</div>
         </div>
-        <div class="future col-12 col-sm-5 col-md-3 col-lg-2 col-xl-3 bg-primary rounded m-2 py-2 text-light">
+        <div class="future col-12 col-sm-5 col-md-3 bg-primary rounded m-2 py-2 text-light">
             <h5 id="day4">${moment().add(4, "days").format("MM/DD/YYYY")}</h5>
             <div id="day4Icon"><img src="http://openweathermap.org/img/w/${data.list[3].weather[0].icon}.png"/></div>
             <div id="day4Temp">Temp: ${data.list[3].main.temp}&#xb0;F</div>
             <div id="day4Hum">Humidity: ${data.list[3].main.humidity}%</div>
         </div>
-        <div class="future col-12 col-sm-5 col-md-3 col-lg-2 col-xl-3 bg-primary rounded m-2 py-2 text-light">
+        <div class="future col-12 col-sm-5 col-md-3 bg-primary rounded m-2 py-2 text-light">
             <h5 id="day5">${moment().add(5, "days").format("MM/DD/YYYY")}</h5>
             <div id="day5Icon"><img src="http://openweathermap.org/img/w/${data.list[4].weather[0].icon}.png"/></div>
             <div id="day5Temp">Temp: ${data.list[4].main.temp}&#xb0;F</div>
