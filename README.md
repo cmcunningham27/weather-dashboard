@@ -20,7 +20,7 @@ A weather application that allows users to check current and future weather for 
 
 ---
 
-[website screenshot](./assets/images/website.png)
+![website screenshot](./assets/images/website.png)
 
 &nbsp;
 
@@ -28,11 +28,11 @@ A weather application that allows users to check current and future weather for 
 
 ---
 
-I needed to create a weather dashboard that allowed users to see the current and next 5 days' weather for a specific city. To do this I needed to have an input field where the user could type a city name. Once they click the search button 3 fetch requests, from a weather API, gather needed information to render onto the website. The first request gathers the current weather (in imperial units): current date (using Moment.js), weather icon, temp, humidity, and wind speed. The second request gathers the current weather's UV index by inputing the lon and lat from the first request, and changes the background color of the number collected according to whether the conditions are favorable (green), moderate (yellow), or severe (red). The third request gathers the future 5 day forecasts': date (using Moment.js), weather icon for each day, temp, and humidity
+I needed to create a weather dashboard that allows users to see the current and next 5-days forecast for a specific city. To do this I needed to have an input field where the user could type a city name. Once they click the search button 3 fetch requests, from a weather API, gather needed information to render onto the website. The first request gathers the current weather (in imperial units): current date (using Moment.js), weather icon, temp, humidity, and wind speed. The second request gathers the current weather's UV index by inputing the lon and lat from the first request, and changes the background color of the number collected according to whether the conditions are favorable (green), moderate (yellow), or severe (red). The third request gathers the future 5 day forecasts': date (using Moment.js), weather icon for each day, temp, and humidity
 
 &nbsp;
 
-Each time the user searches a city, that city is stored in their local storage, and collected to create a history list. I then gave each of the history cities the on() method to ensure that when the user clicks on a listed city, they will be provided that city's current and future 5 day forecast. If the user types in a city they had already searched previously, they will be told to search a new city name. 
+Each time the user searches a city, that city is stored in their local storage, and collected to create a history list. I then gave each of the history cities the on() method to ensure that when the user clicks on a listed city, they will be provided that city's current and future 5 day forecast. If the user types in a city they had already searched previously, they will be told to search a new city name. To have their search box cleared after a search I added an onfocus attribute to the input tag. When the user clicks on the input field, their previous searched city is replaced with Search. I used Bootstrap to create columns and a row, and to make the website responsive to different screen sizes.
 
 &nbsp;
 
@@ -48,7 +48,7 @@ When I deleted my local storage I had found that after all my changes and update
 
 &nbsp;
 
-Another issue I came across was figuring out how to change the background color of just the UV index number. When I received help, it became known that I had actually been on the right track, just forgot a closing quotation mark. After everything was finished and just about ready to be turned in the day it was due, I wound up with an error I haven't seen yet. 
+Another issue I came across was figuring out how to change the background color of just the UV index number. When I received help, it became known that I had actually been on the right track, just forgot a closing quotation mark. After everything was finished and just about ready to be turned in the day it was due, I wound up with an error I haven't seen yet. I tried it on my own and found that I needed to change the variable history to a new variable name, and once this was done it was complete. It works when the user tries to type in a city that was searched in the past.
 
 &nbsp;
 
