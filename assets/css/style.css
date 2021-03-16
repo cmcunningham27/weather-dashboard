@@ -1,7 +1,4 @@
-:root {
-    --dark-gray: #393d3d;
-}
-
+/*changes browser default styles*/
 *,
 *::before,
 *::after {
@@ -10,10 +7,12 @@
     padding: 0;
 }
 
+/*creates base font-size*/
 html {
     font-size: 10px;
 }
 
+/*creates sizes for each heading and current date for searched city*/
 h1 {
     font-size: 3.5rem;
 }
@@ -39,16 +38,13 @@ h6 {
     font-size: 1rem;
 }
 
+/*styles the 5-day forecast content to the left of each card*/
 .future {
     text-align: left;
     padding-left: 7px;
 }
 
-
-
-/* body {
-    font-family: o	“Palatino Linotype”, Palatino, Palladio, “URW Palladio L”, “Book Antiqua”, Baskerville, “Bookman Old Style”, “Bitstream Charter”, “Nimbus Roman No9 L”, Garamond, “Apple Garamond”, “ITC Garamond Narrow”, “New Century Schoolbook”, “Century Schoolbook”, “Century Schoolbook L”, Georgia, serif
-} */
+/*styles the search button*/
 .btn {
     border: 2px solid rgba(2, 117, 216, 0.4);
 }
