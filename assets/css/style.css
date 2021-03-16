@@ -45,7 +45,13 @@ h6 {
 }
 
 /*styles the search button*/
+
 .btn {
     border: 2px solid rgba(2, 117, 216, 0.4);
+    margin-bottom: 5px;
 }
-
+img {
+    width: 20px;
+    height: 20px;
+    
+}

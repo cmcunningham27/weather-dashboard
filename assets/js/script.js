@@ -40,21 +40,21 @@ search.click(function() {
     //if they have history of searched cities in their local storage code runs to add the new search and old to the website
     } else {
 
-        history = JSON.parse(localStorage.getItem("cities"));
+        let old = JSON.parse(localStorage.getItem("cities"));
 
     
-        if ($.inArray(JSON.parse(JSON.stringify(newCity)), history) >= 0) {
+        if ($.inArray(JSON.parse(JSON.stringify(newCity)), old) >= 0) {
             console.log("Search a new city");
             return;
         }
     
-        history.push(newCity);
+        old.push(newCity);
 
-        localStorage.setItem("cities", JSON.stringify(history));
+        localStorage.setItem("cities", JSON.stringify(old));
 
         listItems = "";
-        for (let i = 0; i < history.length; i++) {
-            listItems += "<li class='list-city-item border p-3'>"+history[i]+"</li>";
+        for (let i = 0; i < old.length; i++) {
+            listItems += "<li class='list-city-item border p-3'>"+old[i]+"</li>";
         };
 
         $(".past-cities").html(listItems);
