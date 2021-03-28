@@ -20,7 +20,8 @@ A weather application that allows users to check current and future weather for 
 
 ---
 
-![website screenshot](./assets/images/website.png)
+![opening screenshot](.assets/images/website-1.png)
+![search result screenshot](./assets/images/website.png)
 
 &nbsp;
 
